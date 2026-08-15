@@ -1,0 +1,6 @@
+@DemoCleanArchitectureProject_HostAddress = http://localhost:5274
+
+GET {{DemoCleanArchitectureProject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
