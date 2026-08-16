@@ -11,7 +11,7 @@ namespace ProductManagement.InfrastructureLayer.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly ApplicationDbContext _context;
+        public readonly ApplicationDbContext _context;
         public GenericRepository(ApplicationDbContext context)
         {
             _context = context;

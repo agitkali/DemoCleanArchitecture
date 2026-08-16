@@ -11,5 +11,7 @@ namespace ProductManagement.Application.Interfaces
         IProductRepository Products { get; }
 
         Task<int> CommitAsync();
+
+        Task<int> SaveChangesAsync();
     }
 }
