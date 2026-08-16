@@ -18,5 +18,8 @@ namespace ProductManagement.Application.Interfaces
         Task<ProductResponseDto?> UpdateAsync(int id,ProductUpdateDto dto);
 
         Task<bool> DeleteAsync(int id);
+
+        Task<IEnumerable<ProductResponseDto>>
+            GetProductsByCategoryAsync(string category);
     }
 }

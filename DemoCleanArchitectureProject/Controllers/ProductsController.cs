@@ -50,5 +50,12 @@ namespace DemoCleanArchitectureProject.Controllers
             var product = await _productService.DeleteAsync(id);
             return Ok(product);
         }
+
+        [HttpGet("GetProductCategory")]
+        public async Task<IActionResult> GetProductsByCategoryAsync(string category)
+        {
+            var result = await _productService.GetProductsByCategoryAsync(category);
+            return Ok(result);
+        }
     }
 }

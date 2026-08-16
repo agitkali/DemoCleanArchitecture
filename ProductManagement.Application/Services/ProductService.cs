@@ -66,6 +66,14 @@ namespace ProductManagement.Application.Services
            // throw new NotImplementedException();
         }
 
+        public async Task<IEnumerable<ProductResponseDto>> GetProductsByCategoryAsync(string category)
+        {
+            var product = await _unitOfWork.Products.GetProductsByCategoryAsync($"{category}");
+            return _mapper.Map<IEnumerable<ProductResponseDto>> (product);
+            
+            //throw new NotImplementedException();
+        }
+
         public async Task<ProductResponseDto?> UpdateAsync(int id, ProductUpdateDto dto)
         {
             var product = await _unitOfWork.Products.GetByIdAsync(id);
