@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(Options =>
 {
-    Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    Options.UseSqlServer(builder.Configuration.GetConnectionString("CleanArchitectureDbConn"));
 });
 
 // Generic Repository

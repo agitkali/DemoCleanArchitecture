@@ -19,7 +19,7 @@ namespace ProductManagement.Application.Mapping
             CreateMap<Product, ProductResponseDto>();
 
             // Create DTO -> Entity
-            CreateMap<ProductResponseDto, Product>();
+            CreateMap<ProductCreateDto, Product>();
 
             // Update DTO -> Entity
             CreateMap<ProductUpdateDto, Product>();

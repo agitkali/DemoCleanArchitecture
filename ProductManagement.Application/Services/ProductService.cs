@@ -28,6 +28,7 @@ namespace ProductManagement.Application.Services
         {
             var product = _mapper.Map<Product>(dto);
              await _unitOfWork.Products.AddAsync(product);
+            await _unitOfWork.SaveChangesAsync();
             return _mapper.Map<ProductResponseDto>(product);
             //throw new NotImplementedException();
         }
@@ -75,6 +76,7 @@ namespace ProductManagement.Application.Services
             _mapper.Map(dto, product);
             
               _unitOfWork.Products.Update(product);
+            _unitOfWork.SaveChangesAsync();
             return _mapper.Map<ProductResponseDto>(product);
             
 
