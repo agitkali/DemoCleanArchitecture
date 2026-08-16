@@ -1,6 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using ProductManagement.InfrastructureLayer.Data;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using ProductManagement.Application.Interfaces;
+using ProductManagement.Application.Mapping;
+using ProductManagement.Application.Services;
+using ProductManagement.InfrastructureLayer.Data;
+using ProductManagement.InfrastructureLayer.Repositories;
+using ProductManagement.InfrastructureLayer.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +21,36 @@ builder.Services.AddDbContext<ApplicationDbContext>(Options =>
     Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// Generic Repository
+builder.Services.AddScoped(
+    typeof(IGenericRepository<>),
+    typeof(GenericRepository<>));
 
+// Product Repository
+builder.Services.AddScoped<
+    IProductRepository,
+    ProductRepository>();
+
+// Unit Of Work
+builder.Services.AddScoped<
+    IUnitOfWork,
+    UnitOfWork>();
+
+// Product Service
+builder.Services.AddScoped<
+    IProductService,
+    ProductService>();
+
+
+// AutoMapper
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<ProductProfile>();
+});
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
